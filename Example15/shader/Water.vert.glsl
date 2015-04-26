@@ -116,10 +116,15 @@ void main(void)
 	
 	v_texCoord = vec2(clamp((finalVertex.x+u_waterPlaneLength*0.5-0.5)/u_waterPlaneLength, 0.0, 1.0), clamp((-finalVertex.z+u_waterPlaneLength*0.5+0.5)/u_waterPlaneLength, 0.0, 1.0));
 
+	v_texCoord = vec2(clamp((a_vertex.x+u_waterPlaneLength*0.5-0.5)/u_waterPlaneLength, 0.0, 1.0), clamp((-a_vertex.z+u_waterPlaneLength*0.5+0.5)/u_waterPlaneLength, 0.0, 1.0));
+
 	vec4 vertex = u_viewMatrix*finalVertex;
 	
 	// We caculate in world space.
-	v_incident = u_inverseViewNormalMatrix * vec3(vertex);	
+	v_incident = u_inverseViewNormalMatrix * vec3(vertex);
+
+	v_incident = finalVertex.xyz;
+	//v_incident  = finalVertex.xyz + vec3(0.0,-1.0,0.0);
 				
 	gl_Position = u_projectionMatrix*vertex;
 }

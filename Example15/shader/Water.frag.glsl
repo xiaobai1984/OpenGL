@@ -30,7 +30,10 @@ void main(void)
 
 	vec3 worldNormal = objectToWorldMatrix * objectNormal;
 
-	vec3 worldIncident = normalize(v_incident);
+
+	//vec3 worldNormal = v_normal;
+
+	vec3 worldIncident = normalize(v_incident - vec3(0.0,1.0,0.0));
 	
 	vec3 refraction = refract(worldIncident, worldNormal, Eta);
 	vec3 reflection = reflect(worldIncident, worldNormal);
