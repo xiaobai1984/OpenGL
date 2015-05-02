@@ -208,18 +208,23 @@ GLUSboolean init(GLUSvoid)
 
 	glGenTextures(1, &g_fullscreenTexture);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, g_fullscreenTexture);
+	//glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, g_fullscreenTexture);
+	glBindTexture(GL_TEXTURE_2D, g_fullscreenTexture);
 
 	// Create MSAA texture.
-	glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, MSAA_SAMPLES, GL_RGB32F, SCREEN_WIDTH, SCREEN_HEIGHT, GL_TRUE);
+	//glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, MSAA_SAMPLES, GL_RGB32F, SCREEN_WIDTH, SCREEN_HEIGHT, GL_TRUE);
+	glTexImage2D(GL_TEXTURE_2D, 0, GLUS_RGB, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GLUS_RGB, GL_UNSIGNED_BYTE,0);
 
-	glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+
+	//glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+	glBindTexture(GL_TEXTURE_2D,0);
 
 	// No need to access the depth buffer, so a render buffer is sufficient.
 
 	glGenRenderbuffers(1, &g_fullscreenDepthRenderbuffer);
 	glBindRenderbuffer(GL_RENDERBUFFER, g_fullscreenDepthRenderbuffer);
-	glRenderbufferStorageMultisample(GL_RENDERBUFFER, MSAA_SAMPLES, GL_DEPTH_COMPONENT, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//glRenderbufferStorageMultisample(GL_RENDERBUFFER, MSAA_SAMPLES, GL_DEPTH_COMPONENT, SCREEN_WIDTH, SCREEN_HEIGHT);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 

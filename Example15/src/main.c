@@ -422,6 +422,13 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+    char *GL_version = (char *) glGetString(GL_VERSION);
+    char *GL_vendor = (char *) glGetString(GL_VENDOR);
+    char *GL_renderer = (char *) glGetString(GL_RENDERER);
+    printf("%s\n",GL_version);
+    printf("%s\n",GL_vendor);
+    printf("%s\n",GL_renderer);
+
     glusWindowRun();
 
     return 0;
