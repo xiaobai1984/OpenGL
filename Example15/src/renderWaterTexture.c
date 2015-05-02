@@ -176,7 +176,8 @@ GLUSuint initWaterTexture(GLUSfloat waterPlaneLength)
 	glusMatrix4x4LookAtf(modelViewMatrixWaterTexture, 0.0f, 0.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	glUniformMatrix4fv(g_modelViewMatrixWaterTextureLocation, 1, GL_FALSE, modelViewMatrixWaterTexture);
 
-	glusMatrix4x4Orthof(projectionMatrixWaterTexture, -(GLfloat) TEXTURE_SIZE / 2, (GLfloat) TEXTURE_SIZE / 2, -(GLfloat) TEXTURE_SIZE / 2, (GLfloat) TEXTURE_SIZE / 2, 1.0f, 100.0f);
+	glusMatrix4x4Orthof(projectionMatrixWaterTexture, -(GLfloat) TEXTURE_SIZE / 2, (GLfloat) TEXTURE_SIZE / 2,
+						-(GLfloat) TEXTURE_SIZE / 2, (GLfloat) TEXTURE_SIZE / 2, 1.0f, 100.0f);
     glUniformMatrix4fv(g_projectionMatrixWaterTextureLocation, 1, GL_FALSE, projectionMatrixWaterTexture);
 
 	glUniform1f(g_waterPlaneLengthWaterTextureLocation, waterPlaneLength);

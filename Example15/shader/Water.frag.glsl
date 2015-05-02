@@ -25,12 +25,16 @@ void main(void)
 	// The normals stored in the texture are in object space. No world transformations are yet done.
 	vec3 objectNormal = textureToNormal(texture(u_waterTexture, v_texCoord));
 
+	//objectNormal = vec3(0.0,0.0,1.0);
 	// These three vectors span a basis depending on the world transformations e.g. the waves.
 	mat3 objectToWorldMatrix = mat3(normalize(v_bitangent), normalize(v_normal), normalize(v_tangent));
 
 	vec3 worldNormal = objectToWorldMatrix * objectNormal;
 
 
+	//vec3 worldNormal = objectNormal * objectToWorldMatrix ;
+
+	//worldNormal = objectNormal;
 	//vec3 worldNormal = v_normal;
 
 	vec3 worldIncident = normalize(v_incident - vec3(0.0,1.0,0.0));
